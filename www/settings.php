@@ -21,6 +21,8 @@
 	$key = $server->get_key();	
 	$api = $server->get_api();
 	
+	$mip = file_get_contents('https://ip.seeip.org');
+	
 	if (isset($_POST['submit']) && !empty($_POST['submit'])) {
 		$config = array("api" => $_POST['api'], "key" => $_POST['key'], "secret" => NULL, "recaptcha" => $_POST['recaptcha'], "images" => $_POST['images'], "text" => NULL, "audio" => NULL, "funcaptcha" => NULL);
 		
@@ -161,7 +163,7 @@
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="form-group label-floating">
-                                                    <div class="control-label" style="width: 100%;">Server IP <span class="pull-right"><?=$ips?></span></div>
+                                                    <div class="control-label" style="width: 100%;">Server IP <span class="pull-right"><?=$mip?></span></div>
                                                     <input type="text" name="ip" value="<?=$server->get_server_ip()?>" class="form-control">
                                                 </div>
                                             </div>
