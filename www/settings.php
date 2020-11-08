@@ -11,6 +11,7 @@
 	
 	$images = array($server->get_images() => 'selected');
 	$recaptcha = array($server->get_recaptcha() => 'selected');
+	$hcaptcha = array($server->get_hcaptcha() => 'selected');
 	$funcaptcha = array($server->get_funcaptcha() => 'selected');
 	$text = array($server->get_text() => 'selected');
 	$audio = array($server->get_audio() => 'selected');
@@ -24,7 +25,7 @@
 	$mip = file_get_contents('https://ip.seeip.org');
 	
 	if (isset($_POST['submit']) && !empty($_POST['submit'])) {
-		$config = array("api" => $_POST['api'], "key" => $_POST['key'], "secret" => NULL, "recaptcha" => $_POST['recaptcha'], "images" => $_POST['images'], "text" => NULL, "audio" => NULL, "funcaptcha" => NULL);
+		$config = array("api" => $_POST['api'], "key" => $_POST['key'], "secret" => NULL, "recaptcha" => $_POST['recaptcha'], "images" => $_POST['images'], "text" => NULL, "audio" => NULL, "funcaptcha" => NULL, "hcaptcha" => $_POST['hcaptcha']);
 		
 		$server->save_config($config, dirname(__FILE__) . "/system/config.ini");
 		
@@ -35,6 +36,7 @@
 		
 		$images = array($server->get_images() => 'selected');
 		$recaptcha = array($server->get_recaptcha() => 'selected');
+		$hcaptcha = array($server->get_hcaptcha() => 'selected');
 		$funcaptcha = array($server->get_funcaptcha() => 'selected');
 		$text = array($server->get_text() => 'selected');
 		$audio = array($server->get_audio() => 'selected');
@@ -200,6 +202,15 @@
 													<select name="recaptcha" class="form-control">
 														<option value="0" <?=$recaptcha[0]?>>FALSE</option>
 														<option value="1" <?=$recaptcha[1]?>>TRUE</option>
+													</select>
+                                                </div>
+                                            </div>	
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    <div class="control-label">hCAPTCHA Support</div>
+													<select name="hcaptcha" class="form-control">
+														<option value="0" <?=$hcaptcha[0]?>>FALSE</option>
+														<option value="1" <?=$hcaptcha[1]?>>TRUE</option>
 													</select>
                                                 </div>
                                             </div>												

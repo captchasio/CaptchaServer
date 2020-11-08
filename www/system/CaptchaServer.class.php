@@ -70,6 +70,10 @@ class CaptchaServer {
 		return $this->ini["funcaptcha"];
 	}
 	
+	function get_hcaptcha() {
+		return $this->ini["hcaptcha"];
+	}	
+	
 	function get_text() {
 		return $this->ini["text"];
 	}	

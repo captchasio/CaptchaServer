@@ -15,6 +15,7 @@
 	$images = $server->get_images();
 	$recaptcha = $server->get_recaptcha();
 	$funcaptcha = $server->get_funcaptcha();
+	$hcaptcha = $server->get_hcaptcha();
 	$text = $server->get_text();
 	$audio = $server->get_audio();
 	
@@ -107,7 +108,7 @@
 							
 							print 'ERROR_CAPTCHA_IS_UNSOLVABLE';				
 						} else {
-							if ($token == 'ERROR_CAPTCHA_UNSOLVABLE' || $token == 'ERROR_WRONG_CAPTCHA_ID' || $token == 'CAPCHA_NOT_READY') {
+							if ($token == 'ERROR_CAPTCHA_UNSOLVABLE' || $token == 'ERROR_WRONG_CAPTCHA_ID') {
 								print $token;
 							} else {
 								print 'OK|' . $token;
@@ -148,7 +149,7 @@
 						
 						print 'ERROR_CAPTCHA_IS_UNSOLVABLE';				
 					} else {
-						if ($token == 'ERROR_CAPTCHA_UNSOLVABLE' || $token == 'ERROR_WRONG_CAPTCHA_ID' || $token == 'CAPCHA_NOT_READY') {
+						if ($token == 'ERROR_CAPTCHA_UNSOLVABLE' || $token == 'ERROR_WRONG_CAPTCHA_ID') {
 							print $token;
 						} else {
 							print 'OK|' . $token;

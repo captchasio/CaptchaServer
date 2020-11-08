@@ -140,6 +140,22 @@
 			$id = $server->save_request($data, 0, $answer);
 		
 			print 'OK|'. $id;																						
+		} else if (strtolower(trim($_REQUEST['method'])) == 'hcaptcha') {								
+			$starttime = microtime(true);
+
+			$_proxy = !empty($_REQUEST['proxy']) ? urldecode(trim($_REQUEST['proxy'])) : NULL;	
+			$_proxy_type = !empty($_REQUEST['proxy_type']) ? urldecode(trim($_REQUEST['proxy_type'])) : NULL;
+						
+			$answer = $api->hcaptcha(trim($_REQUEST['sitekey']), trim($_REQUEST['pageurl']), $_proxy, $_proxy_type);		
+
+			$endtime = microtime(true);
+			$elapsed = $endtime - $starttime;	
+					
+			$data = json_encode(array('answer' => 'CAPCHA_NOT_READY', 'recaptcha' => 1, 'elapsed' => $elapsed, 'token' => 'CAPCHA_NOT_READY', 'images' => array('base64' => NULL)));
+						
+			$id = $server->save_request($data, 0, $answer);
+		
+			print 'OK|'. $id;																						
 		} else {			
 			print 'ERROR_WRONG_METHOD_VALUE';
 		}

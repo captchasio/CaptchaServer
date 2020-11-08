@@ -144,7 +144,42 @@ class API {
 		//$return = explode("|", $answer);
 		
 		return trim($id);		
-	}		
+	}	
+
+	function hcaptcha($sitekey, $pageurl, $proxy = null, $proxytype = null) {
+		$post = array(
+			'key' => $this->keys,
+			'method' => 'hcaptcha',
+			'googlekey' => $sitekey,
+			'pageurl' => urlencode($pageurl)
+		);		
+		
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, 'http://api.captchas.io/in.php');
+		curl_setopt($ch, CURLOPT_HEADER, FALSE);					
+		curl_setopt($ch, CURLOPT_AUTOREFERER, TRUE);	
+		curl_setopt($ch, CURLOPT_USERAGENT,  "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1a2pre) Gecko/2008073000 Shredder/3.0a2pre ThunderBrowse/3.2.1.8");
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: multipart/form-data;"));
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+		curl_setopt($ch, CURLOPT_SAFE_UPLOAD, TRUE);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1800);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 1800);
+		curl_setopt($ch, CURLOPT_TCP_NODELAY, TRUE);
+		
+		$response = curl_exec($ch);
+		curl_close($ch);
+		
+		$returned = explode("|", $response);
+		$id = trim($returned[1]);   
+
+		//$answer = $this->get('https://' . $this->server . '/res.php?key=' . $this->keys . '&action=get&id='.$id);
+		//$return = explode("|", $answer);
+		
+		return trim($id);		
+	}	
 }
 
 ?>

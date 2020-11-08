@@ -163,7 +163,7 @@
 													</tr>	
 													<tr>
 														<td>method</td>
-														<td>"post" or "userrecaptcha"</td>
+														<td>"post" or "userrecaptcha" or "hcaptcha"</td>
 													</tr>
 													<tr>
 														<td>file</td>
@@ -172,10 +172,14 @@
 													<tr>
 														<td>googlekey</td>
 														<td>The Google Key</td>
-													</tr>												
+													</tr>
+													<tr>
+														<td>sitekey</td>
+														<td>The data-sitekey</td>
+													</tr>													
 													<tr>
 														<td>pageurl</td>
-														<td>The URL where googlekey is found</td>
+														<td>The URL where googlekey or sitekey is found</td>
 													</tr>	
 													<tr>
 														<td>invisible</td>
