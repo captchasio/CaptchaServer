@@ -1,5 +1,4 @@
 # These are supported funding model platforms
-
 github:
 patreon:
 open_collective: 
@@ -9,4 +8,4 @@ community_bridge:
 liberapay: 
 issuehunt:
 otechie: 
-custom: # ['https://captchas.io', 'https://re-proxy.com']
+custom: ['https://captchas.io', 'https://inditers.org]
