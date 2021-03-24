@@ -1,5 +1,5 @@
 # These are supported funding model platforms
-github: ['https://captchas.io', 'https://inditers.org']
+github: 
 patreon:
 open_collective: 
 ko_fi: 
@@ -8,4 +8,4 @@ community_bridge:
 liberapay: 
 issuehunt:
 otechie: 
-custom: 
+custom: ['https://captchas.io', 'https://inditers.org']
